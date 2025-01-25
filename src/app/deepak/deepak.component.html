@@ -1,0 +1,39 @@
+<form [formGroup]="dataGroup">
+    <div formArrayName="users">
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Phone No</th>
+            <th>Action</th> <!-- Added column for delete button -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let userForm of users.controls; let i = index" [formGroupName]="i">
+            <td>
+              <input type="text" formControlName="id" />
+            </td>
+            <td>
+              <input type="text" formControlName="name" />
+            </td>
+            <td>
+              <input type="text" formControlName="username" />
+            </td>
+            <td>
+              <input type="text" formControlName="phone" />
+            </td>
+            <td>
+              <button type="button" (click)="deleteUser(i)">
+                <span role="img" aria-label="delete">🗑️</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" (click)="getData()">Get Data</button>
+      <button type="button" (click)="clearData()">Clear</button>
+    </div>
+  </form>
+  
